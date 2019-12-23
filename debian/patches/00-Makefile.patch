@@ -1,0 +1,54 @@
+From: Robert Luberda <robert@debian.org>
+Date: Tue, 23 Mar 2010 22:04:47 +0100
+Subject: Makefile and configure fixes
+
+Don't regenerate pot file to prevent from unwanted changes in upstream sources.
+Don't install unneeded documentation files.
+Restore generation of isag.
+Support standard compiler flags like CPPFLAGS or LDFALGS.
+---
+ Makefile.in | 14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/Makefile.in b/Makefile.in
+index 69ae946..71100db 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -78,9 +78,9 @@ SYSCONFIG_DIR = @SYSCONFIG_DIR@
+ SYSCONFIG_FILE = @SYSCONFIG_FILE@
+ 
+ # Compiler flags
+-CFLAGS = @CFLAGS@ -Wall -Wstrict-prototypes -pipe -O2
+-DFLAGS = @DFLAGS@
+-LFLAGS = @STRIP@
++CFLAGS = @CFLAGS@ -Wall -Wstrict-prototypes -pipe
++DFLAGS = @DFLAGS@ @CPPFLAGS@
++LFLAGS = @STRIP@ @LDFLAGS@
+ DFLAGS += -DSA_DIR=\"$(SA_DIR)\" -DSADC_PATH=\"$(SADC_PATH)\"
+ DFLAGS += $(DFSENSORS)
+ DFLAGS += $(DFPCP)
+@@ -341,7 +341,7 @@ locales:
+ endif
+ 
+ nls/sysstat.pot: $(wildcard *.c)
+-	$(XGETTEXT) -o $@ -k_ --msgid-bugs-address="sysstat <at> orange.fr" $^
++#	$(XGETTEXT) -o $@ -k_ --msgid-bugs-address="sysstat <at> orange.fr" $^
+ 
+ # Phony targets
+ .PHONY: clean distclean install install_base install_all uninstall \
+@@ -433,12 +433,12 @@ endif
+ 	$(INSTALL_DATA) sysstat.ioconf $(DESTDIR)$(SYSCONFIG_DIR)
+ 	$(INSTALL_DATA) sysstat.sysconfig $(DESTDIR)$(SYSCONFIG_DIR)/$(SYSCONFIG_FILE)
+ ifeq ($(INSTALL_DOC),y)
+-	$(INSTALL_DATA) CHANGES $(DESTDIR)$(DOC_DIR)
+-	$(INSTALL_DATA) COPYING $(DESTDIR)$(DOC_DIR)
++#	$(INSTALL_DATA) CHANGES $(DESTDIR)$(DOC_DIR)
++#	$(INSTALL_DATA) COPYING $(DESTDIR)$(DOC_DIR)
+ 	$(INSTALL_DATA) CREDITS $(DESTDIR)$(DOC_DIR)
+ 	$(INSTALL_DATA) README.md $(DESTDIR)$(DOC_DIR)
+ 	$(INSTALL_DATA) FAQ.md $(DESTDIR)$(DOC_DIR)
+-	$(INSTALL_DATA) *.lsm $(DESTDIR)$(DOC_DIR)
++#	$(INSTALL_DATA) *.lsm $(DESTDIR)$(DOC_DIR)
+ endif
+ 
+ install_all: install_base cron/crontab sysstat \

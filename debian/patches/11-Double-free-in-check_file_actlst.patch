@@ -1,0 +1,25 @@
+From: Sebastien GODARD <sysstat@users.noreply.github.com>
+Date: Mon, 9 Dec 2019 17:54:07 +0100
+Subject: Fix #242: Double free in check_file_actlst()
+
+Avoid freeing buffer() twice.
+
+Signed-off-by: Sebastien GODARD <sysstat@users.noreply.github.com>
+
+Bugs-Debian: https://bugs.debian.org/946657
+---
+ sa_common.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/sa_common.c b/sa_common.c
+index de9c28a..32d1ea6 100644
+--- a/sa_common.c
++++ b/sa_common.c
+@@ -2152,6 +2152,7 @@ void check_file_actlst(int *ifd, char *dfile, struct activity *act[], uint64_t f
+ 	}
+ 
+ 	free(buffer);
++	buffer = NULL;
+ 
+ 	/* Check that at least one activity selected by the user is available in file */
+ 	for (i = 0; i < NR_ACT; i++) {

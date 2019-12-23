@@ -1,0 +1,21 @@
+From: Robert Luberda <robert@debian.org>
+Date: Tue, 23 Mar 2010 22:04:47 +0100
+Subject: Fix paths in sa2 script
+
+---
+ sa2.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/sa2.in b/sa2.in
+index 98cfafa..6bb5576 100644
+--- a/sa2.in
++++ b/sa2.in
+@@ -52,7 +52,7 @@ fi
+ cd ${ENDIR}
+ if [ x${REPORTS} != xfalse ]
+ then
+-	${ENDIR}/sar $* -f ${DFILE} > ${RPT}
++	${ENDIR}/sar.sysstat "$@" -f ${DFILE} > ${RPT}
+ fi
+ 
+ SAFILES_REGEX='/sar?[0-9]{2,8}(\.(Z|gz|bz2|xz|lz|lzo))?$'

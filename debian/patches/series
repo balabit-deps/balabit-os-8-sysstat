@@ -1,0 +1,10 @@
+00-Makefile.patch
+01-isag.patch
+02-sargraph.patch
+03-manpages.patch
+04-configs.patch
+06-exec.patch
+08-scripts.patch
+09-enable-colors.patch
+10-ignore-ut-failures.patch
+11-Double-free-in-check_file_actlst.patch
