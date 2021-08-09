@@ -8,3 +8,4 @@
 09-enable-colors.patch
 10-ignore-ut-failures.patch
 11-Double-free-in-check_file_actlst.patch
+12-fix-wMB-json-output.patch

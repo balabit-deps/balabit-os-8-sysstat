@@ -1,3 +1,12 @@
+sysstat (12.2.0-2ubuntu0.1) focal; urgency=medium
+
+  * d/p/12-fix-wMB-json-output.patch: Correct values for the number of
+    megabytes written to the device per second when using JSON output.
+    Thanks to Sebastien GODARD <sysstat@users.noreply.github.com> #264
+    on upstream (LP: #1888345).
+
+ -- Miriam España Acebal <miriam.espana@canonical.com>  Mon, 09 Aug 2021 16:08:06 +0200
+
 sysstat (12.2.0-2) unstable; urgency=medium
 
   * Add 11-Double-free-in-check_file_actlst.patch, taken from upstream,
