@@ -1,3 +1,17 @@
+sysstat (12.2.0-2ubuntu0.2) focal-security; urgency=medium
+
+  * SECURITY UPDATE: overflow in arithmetic multiplication
+    - debian/patches/CVE-2022-39377-1.patch: fix size_t overflow in
+      common.c, common.h, sa_common.c.
+    - debian/patches/CVE-2022-39377-2.patch: add more overflow checks in
+      common.c, common.h, sa_common.c, sadc.c.
+    - debian/patches/CVE-2022-39377-3.patch: make sure values to be
+      compared are unsigned integers in common.c, common.h, sa_common.c,
+      sadc.c.
+    - CVE-2022-39377
+
+ -- Marc Deslauriers <marc.deslauriers@ubuntu.com>  Fri, 25 Nov 2022 12:57:50 -0500
+
 sysstat (12.2.0-2ubuntu0.1) focal; urgency=medium
 
   * d/p/12-fix-wMB-json-output.patch: Correct values for the number of
