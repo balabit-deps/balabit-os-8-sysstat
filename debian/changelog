@@ -1,3 +1,12 @@
+sysstat (12.2.0-2ubuntu0.3) focal-security; urgency=medium
+
+  * SECURITY UPDATE: overflow in arithmetic multiplication
+    - debian/patches/CVE-2023-33204.patch: fix overflow check logic in
+      check_overflow() in common.c.
+    - CVE-2023-33204
+
+ -- Rodrigo Figueiredo Zaiden <rodrigo.zaiden@canonical.com>  Mon, 05 Jun 2023 11:19:10 -0300
+
 sysstat (12.2.0-2ubuntu0.2) focal-security; urgency=medium
 
   * SECURITY UPDATE: overflow in arithmetic multiplication
